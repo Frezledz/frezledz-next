@@ -40,7 +40,15 @@ function Tags({tags}:{tags:string[]}){
 }
 
 export default function ShowPages(){
-    const params = getParams();
+    
+    const searchParams = useSearchParams();
+    const search = searchParams.get('query');
+    let params;
+    if(search===null){
+        params="";
+    }else{
+        params=search;
+    }
     if(params===""){
         let lists:JSX.Element[]=[];
         pages.forEach(element => {
