@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css?family=Noto Sans');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+
+
+@layer components {
+    .link-primary {
+      @apply px-3  hover:text-blue-500 duration-300;
+    }
+  }
+
+  
+  
