@@ -1,7 +1,8 @@
 "use client"
 import { useState } from "react";
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-export default function SearchBar(){
+import { Suspense } from "react";
+function SearchBarwithout(){
     const searchParams = useSearchParams();
     const [update, setupdate] = useState("");
     const pathname = usePathname();
@@ -22,4 +23,10 @@ export default function SearchBar(){
     </div>
       </div>
     )
+}
+
+export default function SearchBar(){
+  return(
+    <Suspense><SearchBarwithout/></Suspense>
+  )
 }
