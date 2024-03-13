@@ -1,6 +1,7 @@
 
 import SearchBar from "./search";
 import ShowPages from "./shower";
+import { Suspense } from "react";
 export default function Page(){
     return(
         <div>
@@ -9,7 +10,7 @@ export default function Page(){
         <div className="flex justify-center">
             
             <div className=" grid grid-cols-1 lg:grid-cols-2 max-w-8xl items-center">
-                <ShowPages/>
+                <Suspense><ShowPages/></Suspense>
             </div>
         </div>
         </div>

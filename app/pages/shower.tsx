@@ -5,18 +5,7 @@ import Link from "next/link";
 import SearchBar from "./search";
 import { Post,pages,tags } from "./page";
 import { useSearchParams } from "next/navigation";
-
-function getParams():string{
-    const searchParams = useSearchParams();
-    const search = searchParams.get('query');
-    if(search===null){
-        return "";
-    }else{
-        return search;
-    }
-
-}
-
+import { Suspense } from "react";
 
 export function ShowPage({page}:{page:Post}){
     return(
@@ -39,7 +28,7 @@ function Tags({tags}:{tags:string[]}){
     return <div className=" my-2">{elements}</div>;
 }
 
-export default function ShowPages(){
+function ShowsPages(){
     
     const searchParams = useSearchParams();
     const search = searchParams.get('query');
@@ -67,6 +56,10 @@ export default function ShowPages(){
         }
     });
     return(<>{lists}</>);
+}
+
+export default function ShowPages(){
+    return <Suspense><ShowsPages/></Suspense>
 }
 
 function Judgement(page: Post, paramarr: string[]): boolean {
