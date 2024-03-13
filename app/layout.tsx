@@ -1,20 +1,38 @@
 import {Header,Footer} from "./ui/headers";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from "next/script";
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   const ID:string|undefined=process.env.GA_ID;
-  let trueID:string;
+  let ga_id:string;
   if(ID===undefined){
-    trueID="";
+    ga_id="";
   }else{
-    trueID=ID;
+    ga_id=ID;
   }
   return (
     <html lang="en">
+    <Script
+      async
+      src={`https://www.googletagmanager.com/gtag/js? 
+      id=${ga_id}`}
+    ></Script>
+    <Script
+      id="google-analytics"
+      dangerouslySetInnerHTML={{
+        __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${ga_id}');
+        `,
+      }}
+    ></Script>
       <head>
         
         <title>frezledz</title>
@@ -30,7 +48,6 @@ export default function RootLayout({
           
         <Footer/>
         </body>
-      <GoogleAnalytics gaId={trueID} />
     </html>
   )
 }
