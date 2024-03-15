@@ -20,7 +20,7 @@ export default function Page ({ params }: { params: { slug: string } }){
     const slug:string = params.slug;
     const isPathExists:number = searcher(slug);
     if(isPathExists!==-1){
-        const file = fs.readFileSync(`./posts/${slug}.md`,'utf-8');
+        const file = fs.readFileSync(`${process.cwd()}/posts/${slug}.md`,'utf-8');
         const info = pages[isPathExists];
         return(
             <Fadein>
