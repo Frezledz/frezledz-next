@@ -62,6 +62,14 @@ const pages:Post[]=[
       date:"14/3/24",
       category:["blog"]
     },
+    {
+      href:"languages",
+      tn:"https://www.trustedreviews.com/wp-content/uploads/sites/54/2019/04/Surface-Studio-2-lead.jpg",
+      title:"プログラミング言語たち",
+      subtitle:"いつもは二種ぐらいしか使わないですが羅列がしたいんです。",
+      date:"30/3/24",
+      category:["blog"]
+    },
 ]
 
 export {pages, tags};
